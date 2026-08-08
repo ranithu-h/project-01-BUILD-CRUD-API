@@ -1,0 +1,11 @@
+ai-version/
+
+docs/
+
+src/data/
+
+src/routes
+
+src/middleware
+
+tests/
