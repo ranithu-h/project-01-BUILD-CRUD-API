@@ -1,11 +1,12 @@
 const express = require('express');
 const app = express();
+app.use(express.json());
 const port = 3000;
 
 tasks = [
-  {id: 1, title: "Task 1", description: "This is task 1"},
-  {id: 2, title: "Task 2", description: "This is task 2"},
-  {id: 3, title: "Task 3", description: "This is task 3"}
+  {id: 1, title: "Task 1", done: true},
+  {id: 2, title: "Task 2", done: true},
+  {id: 3, title: "Task 3", done: true}
 ]
 
 app.get('/', (req, res) => {
@@ -29,10 +30,28 @@ app.get('/tasks/:id', (req, res) =>{
   if (!task){
     return res.status(404).json({ error: "Task ${id} not found" });
   }
-  
-  res.json(task);
-  
 
+  res.json(task);
+});
+
+app.post('/tasks', (req, res) => {
+  const title = req.body.title
+
+  if (!title){
+    return res.status(400).json({error: "Missing Title"});
+  }
+
+  let new_id = tasks.length + 1;
+
+  tasks.push({ "id": new_id,
+    "title": "Buy milk",
+    done: false
+  })
+
+  res.status(201).json({ "id": new_id,
+    "title": title,
+    done: false
+  });
 });
 
 app.listen(port, () => {
