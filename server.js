@@ -54,6 +54,31 @@ app.post('/tasks', (req, res) => {
   });
 });
 
+app.put('/tasks/:id', (req, res) => {
+  const id = Number(req.params.id);
+  const task = tasks.find(t => t.id === id);
+  const title = req.body.title;
+  const done = req.body.done;
+
+  if (!task){
+    return res.status(404).json({error: "Unknown id"});
+  }
+
+  if (!title && done === undefined){
+    return res.status(400).json({error: "Empty/Invalid body"})
+  }
+
+  if (title !== undefined){
+    task.title = title;
+  }
+
+  if (done !== undefined){
+    task.done = done;
+  }
+
+  res.json(task)
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
