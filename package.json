@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "express": "^5.2.1",
     "swagger-ui-express": "^5.0.1"
   },
   "name": "project-01-build-crud-api",
@@ -9,7 +10,6 @@
   "directories": {
     "doc": "docs"
   },
-  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
@@ -21,7 +21,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/ranithu-h/project-01-BUILD-CRUD-API/issues"
   },

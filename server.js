@@ -1,13 +1,15 @@
-const express = require('express');
+import express from 'express';
 const app = express();
 app.use(express.json());
-const swaggerUi = require('swagger-ui-express');
-const swaggerDocument = require('./swagger.json');
+import swaggerUi from 'swagger-ui-express';
+import { readFileSync } from 'fs';
 
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+const openapiDocument = JSON.parse(readFileSync('./docs/openapi.json', 'utf-8'));
+
+app.use('/docs', swaggerUi.serve, swaggerUi.setup(openapiDocument));
 const port = 3000;
 
-tasks = [
+let tasks = [
   {id: 1, title: "Task 1", done: true},
   {id: 2, title: "Task 2", done: true},
   {id: 3, title: "Task 3", done: true}
