@@ -11,7 +11,7 @@ const port = 3000;
 
 let tasks = [
   {id: 1, title: "Task 1", done: true},
-  {id: 2, title: "Task 2", done: true},
+  {id: 2, title: "Task 2", done: false},
   {id: 3, title: "Task 3", done: true}
 ]
 
@@ -27,7 +27,7 @@ app.get('/health', (req, res) => {
 
 app.get('/tasks', (req, res) => {
 
-  if (req.query.done === false){
+  if (req.query.done === "false"){
     let not_dont_tasks = []
   
     for (let i = 0; i < tasks.length; i++){
@@ -36,7 +36,7 @@ app.get('/tasks', (req, res) => {
       }
     }
 
-      res.json(not_dont_tasks)
+      return res.json(not_dont_tasks)
   }
 
   res.json(tasks);
