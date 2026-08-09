@@ -83,6 +83,26 @@ app.put('/tasks/:id', (req, res) => {
   res.json(task)
 });
 
+app.delete('/tasks/:id', (req, res) => {
+  const id = Number(req.params.id);
+
+  let indexToRemove = -1;
+
+  for (let i = 0; i < tasks.length; i++) {
+    if (tasks[i].id === id) {
+      indexToRemove = i;
+    }
+  }
+
+  if (indexToRemove === -1) {
+    return res.status(404).json({ error: `Task ${id} not found` });
+  }
+
+  tasks.splice(indexToRemove, 1);
+
+  res.status(204).send();
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
