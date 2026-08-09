@@ -1,1 +1,29 @@
-{}
+{
+  "dependencies": {
+    "swagger-ui-express": "^5.0.1"
+  },
+  "name": "project-01-build-crud-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ranithu-h/project-01-BUILD-CRUD-API.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/ranithu-h/project-01-BUILD-CRUD-API/issues"
+  },
+  "homepage": "https://github.com/ranithu-h/project-01-BUILD-CRUD-API#readme"
+}
