@@ -26,6 +26,19 @@ app.get('/health', (req, res) => {
 });
 
 app.get('/tasks', (req, res) => {
+
+  if (req.query.done === false){
+    let not_dont_tasks = []
+  
+    for (let i = 0; i < tasks.length; i++){
+      if (tasks[i].done === false){
+        not_dont_tasks.push(tasks[i]);
+      }
+    }
+
+      res.json(not_dont_tasks)
+  }
+
   res.json(tasks);
 });
 
@@ -103,19 +116,6 @@ app.delete('/tasks/:id', (req, res) => {
   tasks.splice(indexToRemove, 1);
 
   res.status(204).send();
-});
-
-app.get('/tasks?done=false', (res, req)=>{
-
-  let not_dont_tasks = []
-  
-  for (let i = 0; i < tasks.length; i++){
-    if (tasks[i].done === false){
-      not_dont_tasks.push(tasks[i]);
-    }
-  }
-
-  res.status(201).json(not_dont_tasks)
 });
 
 app.listen(port, () => {
